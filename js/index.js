@@ -140,7 +140,8 @@ function fillModal(record) {
 
     $("#confirmbutton").css('display', 'inline-block');
     console.log("create delete button element with id:"+record.id);
-    let elem = `<button type="button" class="btn btn-danger" onclick="submitDelete('${record.id}', '${api}');">Confirm delete</button>`;
+    let elem = '<button class="btn btn-secondary">Cancel</button>&nbsp;';
+    elem += `<button type="button" class="btn btn-danger" onclick="submitDelete('${record.id}', '${api}');">Confirm delete</button>`;
     $('#confirmbutton').popover('dispose');
     $('#confirmbutton').popover({
         animation: true,
