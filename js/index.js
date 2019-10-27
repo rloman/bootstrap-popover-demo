@@ -133,19 +133,29 @@ function fillUpdateDiv(record, api) {
 //  show the usage of the popover here!
 function fillModal(record) {
 
+    // fill the modal
     $("#id").val(record.id);
     $("#title").val(record.title);
     $("#body").val(record.body);
-    console.log(modal);
+    
 
-    $("#confirmbutton").css('display', 'inline-block');
-    console.log("create delete button element with id:"+record.id);
-    let elem = '<button class="btn btn-secondary">Cancel</button>&nbsp;';
-    elem += `<button type="button" class="btn btn-danger" onclick="submitDelete('${record.id}', '${api}');">Confirm delete</button>`;
-    $('#confirmbutton').popover('dispose');
-    $('#confirmbutton').popover({
+    // set inline block to respect the margins if applicable
+    $("#deleteButton").css('display', 'inline-block');
+
+    // create the buttons for the confirmation
+            // first the cancel button which just does nothing
+    let confirmationButtons= '<button class="btn btn-secondary">Cancel</button>&nbsp;';
+
+        // than the confirmbutton which just invokes submitDelete(...)
+    confirmationButtons += `<button type="button" class="btn btn-danger" onclick="submitDelete('${record.id}', '${api}');">Confirm delete</button>`;
+
+    // set the deleteButton to be a popover
+    // first dispose / distroy the popover on the deleteButton to be sure there is no active on!
+    $('#deleteButton').popover('dispose');
+    // the enable the popover
+    $('#deleteButton').popover({
         animation: true,
-        content: elem,
+        content: confirmationButtons, // just use the above created confirmButtons for confirmation
         html: true,
         container: modal
     });
