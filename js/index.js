@@ -18,7 +18,7 @@ $(document).ready(function () {
         document.getElementById("modal-title").innerHTML = "Create a table";
         document.getElementById("modalForm").reset();
         $("#btnsubmit").attr('onclick', 'submitNew("' + api + '");');
-        $('#modal').modal('toggle');
+        $('#postDetail').modal('toggle');
 
     });
 });
@@ -53,7 +53,7 @@ function initDataTable() {
         // this function fetches one record and fill the modal with the data and shows the modal for editing
         getSingleRecord(data.id, api);
 
-        $('#modal').modal('toggle');
+        $('#postDetail').modal('toggle');
     });
 
 }
@@ -104,7 +104,7 @@ function submitNew(api) {
     });
 
     deselect();
-    $('#modal').modal('toggle');
+    $('#postDetail').modal('toggle');
 }
 
 // this function perform cleaning up of the table
@@ -157,7 +157,7 @@ function fillModal(record) {
         animation: true,
         content: confirmationButtons, // just use the above created confirmButtons for confirmation
         html: true,
-        container: modal
+        container: postDetail
     });
 }
 
@@ -184,7 +184,7 @@ function submitEdit(id, api) {
     });
 
     deselect();
-    $('#modal').modal('toggle');
+    $('#postDetail').modal('toggle');
 }
 
 function submitDelete(id, api) {
@@ -197,5 +197,5 @@ function submitDelete(id, api) {
         success: getData(api),
     });
 
-    $('#modal').modal('toggle');
+    $('#postDetail').modal('toggle');
 }
